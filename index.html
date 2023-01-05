@@ -6,30 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peekafilm</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
   
 </head>
 
 <body>
-   <!-- do we need a header? -->
-
     <main>
         <!-- landing -->
         <section class="hero is-fullheight has-background-black" id="landing">
             <div class ="hero-body">
                 <div class="container">
-                    <figure class ="logo"
-                        <img src = "image.png" style="max-width:512px;">
+                    <figure class ="image is-inline-block">
+                        <img src = "assets/images/logoname.png" style="max-width:1500px;">
                     </figure>
-        
-            <input type = "text" class="has-text-centered py-6 my-6" id="superheroName">
-            <button class ="button is-danger is-large" id = "search"> Search</button>
             </div>
         </div>
+        <input type = "text" class="has-text-centered mx-6 py-4 my-4" id="superheroName">
+        <button class ="button is-danger is-medium" id = "search"> Search</button>
             
         </section>
         
         <!-- content page -->
-        <section class = "hidden" class="section pt-4 pb-0" id ="contentPage">Name
+        <section class = "hidden" class="section mx-1  pt-4 pb-0" id ="contentPage">
          
         </section>
 
