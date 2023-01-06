@@ -27,6 +27,20 @@ searchForm.addEventListener('submit', (event) => {
   }
 });
 
+// add an event listener to the search history list
+searchHistoryList.addEventListener('click', (event) => {
+    // get the clicked element
+    const clickedElement = event.target;
+    // check if the clicked element is a list item
+    if (clickedElement.tagName === 'LI') {
+      // get the text of the list item
+      const searchTerm = clickedElement.textContent;
+      // display the search term in an alert
+      displaySearchInfo(searchTerm);
+      // you can retrieve and display the information of the search term here
+    }
+  });
+
 // add a function to add the search term to Local Storage
 function addToLocalStorage(searchTerm) {
   // check if Local Storage is supported by the browser
