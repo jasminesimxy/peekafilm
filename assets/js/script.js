@@ -2,7 +2,6 @@
 
 // jasmine: hide landing page - show content page
 
-// chris: history list - retrieve data from local storage - local browser
 // get the search form and the search history list
 const searchForm = document.getElementById('search-form');
 const searchHistoryList = document.getElementById('search-history');
@@ -35,7 +34,7 @@ searchHistoryList.addEventListener('click', (event) => {
     if (clickedElement.tagName === 'LI') {
       // get the text of the list item
       const searchTerm = clickedElement.textContent;
-      // display the search term in an alert
+      // retrieve and display the information of the search term 
       displaySearchInfo(searchTerm);
       // you can retrieve and display the information of the search term here
     }
