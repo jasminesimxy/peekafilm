@@ -1,4 +1,20 @@
 // jasmine: landing page - search button - event listener 
+var landingContainer = document.getElementById("landing");
+var contentContainer = document.getElementById("contentpage")
+
+// jasmine: landing page - search button - event listener 
+
+
+
+
+// jasmine: second page 
+
+function displayContent () {
+    //hide landing page 
+    landingContainer.style.display="none";
+    contentContainer.style.display="block";
+
+}
 
 // jasmine: hide landing page - show content page
 
@@ -90,3 +106,4 @@ let result = "";
 
 
 // chenghao: videolist - fetch data from youtube api with api key
+
