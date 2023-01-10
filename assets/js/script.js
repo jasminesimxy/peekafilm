@@ -12,6 +12,8 @@ searchForm.addEventListener('submit', (event) => {
   // prevent the form from submitting
   event.preventDefault();
 
+
+
   // get the input field
   const inputField = event.target.elements['0'];
   // get the search term
@@ -64,5 +66,27 @@ function addToLocalStorage(searchTerm) {
     searchHistoryList.innerHTML = '<li>Sorry, your browser does not support Local Storage</li>';
   }};
 // harry: information list - fetch data from marvel api with api KeyboardEvent
+
+
+const MARVEL_BASE_URL = 'https://gateway.marvel.com:443/v1/public';
+const MARVEL_API_KEY = '24e377359e91ec437d1b5963bd2dc195';
+
+
+
+function searchCharacters(query) {
+  const url = `${MARVEL_BASE_URL}/characters?ts=1&nameStartsWith=${query}&apikey=${MARVEL_API_KEY}&hash=667ae841fa34b73b2b37dd1c1df1e89e`;
+  return fetch(url)
+    .then(response => response.json())
+    
+}
+
+searchCharacters('spider')
+  .then(characters => console.log(characters));
+
+const searchResults = document.getElementById("search-results")
+let result = "";
+
+
+
 
 // chenghao: videolist - fetch data from youtube api with api key
