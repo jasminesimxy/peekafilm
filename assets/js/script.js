@@ -1,7 +1,10 @@
+// jasmine: landing page - search button - event listener 
 var landingContainer = document.getElementById("landing");
 var contentContainer = document.getElementById("contentpage")
 
 // jasmine: landing page - search button - event listener 
+
+
 
 
 // jasmine: second page 
@@ -11,9 +14,9 @@ function displayContent () {
     landingContainer.style.display="none";
     contentContainer.style.display="block";
 
-    
 }
 
+// jasmine: hide landing page - show content page
 
 // chris: history list - retrieve data from local storage - local browser
 // get the search form and the search history list
@@ -24,9 +27,6 @@ const searchHistoryList = document.getElementById('search-history');
 searchForm.addEventListener('submit', (event) => {
   // prevent the form from submitting
   event.preventDefault();
-
-
-// chenghao: video list - fetch data from youtube api with api key 
 
   // get the input field
   const inputField = event.target.elements['0'];
@@ -82,4 +82,3 @@ function addToLocalStorage(searchTerm) {
 // harry: information list - fetch data from marvel api with api KeyboardEvent
 
 // chenghao: videolist - fetch data from youtube api with api key
-
