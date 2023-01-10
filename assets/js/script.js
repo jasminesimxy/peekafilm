@@ -1,7 +1,10 @@
+// jasmine: landing page - search button - event listener 
 var landingContainer = document.getElementById("landing");
 var contentContainer = document.getElementById("contentpage")
 
 // jasmine: landing page - search button - event listener 
+
+
 
 
 // jasmine: second page 
@@ -11,9 +14,9 @@ function displayContent () {
     landingContainer.style.display="none";
     contentContainer.style.display="block";
 
-    
 }
 
+// jasmine: hide landing page - show content page
 
 // chris: history list - retrieve data from local storage - local browser
 // get the search form and the search history list
@@ -26,7 +29,6 @@ searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
 
-// chenghao: video list - fetch data from youtube api with api key 
 
   // get the input field
   const inputField = event.target.elements['0'];
@@ -81,56 +83,27 @@ function addToLocalStorage(searchTerm) {
   }};
 // harry: information list - fetch data from marvel api with api KeyboardEvent
 
-// chenghao: videolist - fetch data from youtube api with api key
 
-
-var btnEl = document.querySelector('.button');
-var searchInputEl = document.querySelector('#search-input');
+const MARVEL_BASE_URL = 'https://gateway.marvel.com:443/v1/public';
+const MARVEL_API_KEY = '24e377359e91ec437d1b5963bd2dc195';
 
 
 
-function getApi(){
-
-    var searchInput = searchInputEl.value;
-    console.log(searchInput);
-
-    var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCvC4D8onUfXzvjTOM-dBfEA&maxResults=5&order=date&q=' + searchInput + '&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4';
+function searchCharacters(query) {
+  const url = `${MARVEL_BASE_URL}/characters?ts=1&nameStartsWith=${query}&apikey=${MARVEL_API_KEY}&hash=667ae841fa34b73b2b37dd1c1df1e89e`;
+  return fetch(url)
+    .then(response => response.json())
     
-    fetch(requestUrl)
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-
-        var videoID = data.items[0].id.videoId;
-        console.log(videoID) //videoId
-
-        var videoImage = data.items[0].snippet.thumbnails.default.url;
-        console.log(videoImage) //image src
-
-        var videoListEl = document.querySelector('#video-container')
-        var videoEl = document.createElement('a');
-
-
-        var videoImageEl = document.createElement('img');
-        videoImageEl.src = videoImage;
-
-        videoEl.setAttribute("href","https://www.youtube.com/watch?v=" + videoID);
-        
-        videoEl.append(videoImageEl);
-       
-
-        console.log(videoEl);
-        console.log(videoListEl);
-        console.log(videoImageEl);
-
-        videoListEl.appendChild(videoEl);
-        
-    })
 }
 
+searchCharacters('spider')
+  .then(characters => console.log(characters));
 
-btnEl.addEventListener('click',getApi);
+const searchResults = document.getElementById("search-results")
+let result = "";
 
+
+
+
+// chenghao: videolist - fetch data from youtube api with api key
 
