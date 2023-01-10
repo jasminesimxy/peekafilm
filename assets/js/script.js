@@ -1,6 +1,19 @@
+var landingContainer = document.getElementById("landing");
+var contentContainer = document.getElementById("contentpage")
+
 // jasmine: landing page - search button - event listener 
 
-// jasmine: hide landing page - show content page
+
+// jasmine: second page 
+
+function displayContent () {
+    //hide landing page 
+    landingContainer.style.display="none";
+    contentContainer.style.display="block";
+
+    
+}
+
 
 // get the search form and the search history list
 const searchForm = document.getElementById('search-form');
@@ -10,6 +23,9 @@ const searchHistoryList = document.getElementById('search-history');
 searchForm.addEventListener('submit', (event) => {
   // prevent the form from submitting
   event.preventDefault();
+
+
+// chenghao: video list - fetch data from youtube api with api key 
 
   // get the input field
   const inputField = event.target.elements['0'];
@@ -65,3 +81,4 @@ function addToLocalStorage(searchTerm) {
 // harry: information list - fetch data from marvel api with api KeyboardEvent
 
 // chenghao: videolist - fetch data from youtube api with api key
+
