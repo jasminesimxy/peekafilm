@@ -1,22 +1,3 @@
-// jasmine: landing page - search button - event listener 
-var landingContainer = document.getElementById("landing");
-var contentContainer = document.getElementById("contentpage")
-
-// jasmine: landing page - search button - event listener 
-
-
-
-
-// jasmine: second page 
-
-function displayContent () {
-    //hide landing page 
-    landingContainer.style.display="none";
-    contentContainer.style.display="block";
-
-}
-
-// jasmine: hide landing page - show content page
 
 // chris: history list - retrieve data from local storage - local browser
 // get the search form and the search history list
@@ -170,8 +151,6 @@ heroBtn.addEventListener('click', searchCharacters)
 
 
   
-
-
 
 
 
