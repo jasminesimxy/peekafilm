@@ -1,3 +1,4 @@
+
 const MARVEL_BASE_URL = 'https://gateway.marvel.com:443/v1/public';
 const MARVEL_API_KEY = '24e377359e91ec437d1b5963bd2dc195';
 const youtubeApiKey = "AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4";
@@ -5,6 +6,10 @@ const marvelEntertainmentID ="UCvC4D8onUfXzvjTOM-dBfEA";
 var searchInputEl = document.querySelector('#superheroName');
 var videoListEl = document.querySelector('#video-container');
 var maxResults = "5";
+
+var heroBtn = document.querySelector('#search');
+const searchResults = document.getElementById("search-results");
+let result = "";
 
 var heroBtn = document.querySelector('#search');
 const searchResults = document.getElementById("search-results");
@@ -42,6 +47,7 @@ function searchCharacters(e,query) {
 }
 function getYoutubeApi(){
   //event.preventDefault();
+
   //videoListEl.removeChild();
   var searchInput = searchInputEl.value;
   console.log(searchInput);
@@ -56,6 +62,12 @@ function getYoutubeApi(){
   .then(function(data){
     console.log(data);
     console.log(data.items.length)
+
+    var child = videoListEl.lastElementChild;
+    while (child) {
+      videoListEl.removeChild(child);
+        child = videoListEl.lastElementChild;
+    }
     for (var i = 0; i < data.items.length; i++){
       var videoID = data.items[i].id.videoId;
       var iframeEl = document.createElement('iframe');
@@ -67,6 +79,7 @@ function getYoutubeApi(){
     }
   })
 }
+
 heroBtn.addEventListener('click', searchCharacters);
 
 function addToLocalStorage() {
@@ -75,3 +88,4 @@ function addToLocalStorage() {
     var storedInput = localStorage.getItem("searchInput");
     document.getElementById("display-input").innerHTML = storedInput;
   }
+
