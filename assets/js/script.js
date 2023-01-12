@@ -11,9 +11,6 @@ var heroBtn = document.querySelector('#search');
 const searchResults = document.getElementById("search-results");
 let result = "";
 
-var heroBtn = document.querySelector('#search');
-const searchResults = document.getElementById("search-results");
-let result = "";
 
 
 function searchCharacters(e,query) {
