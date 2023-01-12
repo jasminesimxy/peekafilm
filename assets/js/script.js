@@ -107,56 +107,44 @@ let result = "";
 
 // chenghao: videolist - fetch data from youtube api with api key
 
-var btnEl = document.querySelector('.button');
+var searchFormEl = document.querySelector('#search-form')
 var searchInputEl = document.querySelector('#search-input');
+var videoListEl = document.querySelector('#video-container');
 
+const youtubeApiKey = "AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4";
+const marvelEntertainmentID ="UCvC4D8onUfXzvjTOM-dBfEA";
+var maxResults = "5";
 
+function getApi(event){
+  event.preventDefault();
 
-function getApi(){
+  var searchInput = searchInputEl.value;
+  console.log(searchInput);
+  var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId='+ marvelEntertainmentID +'&maxResults=' + maxResults +'&q=' + searchInput + '&key=' + youtubeApiKey;
 
-    var searchInput = searchInputEl.value;
-    console.log(searchInput);
-
-    var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCvC4D8onUfXzvjTOM-dBfEA&maxResults=5&order=date&q=' + searchInput + '&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4';
+  fetch(requestUrl)
+  .then(function(response){
+      if(!response.ok){
+        throw response.json();
+      }
+      return response.json();
+  })
+  .then(function(data){
+    console.log(data);
+    console.log(data.items.length)
     
-    fetch(requestUrl)
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
+    for (var i = 0; i < data.items.length; i++){
+      var videoID = data.items[i].id.videoId;
+      var iframeEl = document.createElement('iframe');
 
-        var videoID = data.items[0].id.videoId;
-        console.log(videoID) //videoId
+      iframeEl.setAttribute("src","https://www.youtube.com/embed/" + videoID);
+      iframeEl.setAttribute("allowfullscreen","1");
+      iframeEl.setAttribute("height","300px");
+      iframeEl.setAttribute("width","600px");
 
-        var videoImage = data.items[0].snippet.thumbnails.default.url;
-        console.log(videoImage) //image src
-
-        var videoListEl = document.querySelector('#video-container')
-        var videoEl = document.createElement('a');
-
-
-        var videoImageEl = document.createElement('img');
-        videoImageEl.src = videoImage;
-
-        //videoEl.setAttribute("href","https://www.youtube.com/watch?v=" + videoID);
-        videoEl.setAttribute("href","https://www.youtube.com/embed/" + videoID);
-
-        //videoEl.setAttribute("href","https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoID + "&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4");
-        
-        videoEl.append(videoImageEl);
-
-        
-       
-
-        console.log(videoEl);
-        console.log(videoListEl);
-        console.log(videoImageEl);
-
-        videoListEl.appendChild(videoEl);
-        
-    })
+      videoListEl.appendChild(iframeEl)  
+    }
+  })
 }
 
-
-btnEl.addEventListener('click',getApi);
+searchFormEl.addEventListener('submit',getApi);
