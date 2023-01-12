@@ -37,15 +37,17 @@
         My first website with <strong>Bulma</strong>!
       </p>
     </div>
+    
       <!-- create a search form -->
+      <section>
       <form id="search-form">
         <!-- create an input field and a button -->
         <div class="field has-addons">
           <div class="control is-expanded search-container">
-            <input id= "search-form"class="input search-bar  is-danger is-medium" type="text" placeholder="Enter favorite superhero">
+            <input class="input search-bar  is-danger is-medium" type="text" placeholder="Enter favorite superhero" id="hero-input">
           </div>
           <div class="control">
-            <button class="button is-info is-danger is-medium" id = "search" type="submit">Search</button>
+            <button class="button is-info is-danger is-medium" id = "search-button" type="submit">Search</button>
           </div>
         </div>
       </form>
@@ -53,18 +55,16 @@
       <ul id="search-history"></ul>
     </div>
 
-    
   </section>
 
   <section>
-    <p><input type="text" id="search-input" placeholder="Enter keyword"></p>
-    
-
-    <div id="video-container"></div>
-
+    <p><input type="text" id="search-input" placeholder="Enter keyword">
+    </p>
+    <div>
+        <button type="submit" class="button">Search</button>
     </div>
-
-
+    <div id="video-container">
+    </div>
   </section>
 
   <script src="./assets/js/script.js"></script>
