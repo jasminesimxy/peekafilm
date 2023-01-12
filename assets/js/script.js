@@ -51,16 +51,18 @@ const searchResults = document.getElementById("search-results")
 let result = "";
 
 
-
 // chenghao: videolist - fetch data from youtube api with api key
 
 function getYoutubeApi(){
-  videoListEl.replaceChildren();
-  console.log(('inside getYoutubeApi'));
+    videoListEl.replaceChildren();
+    
+    console.log(('inside getYoutubeApi'));
+    
     var heroStr = heroInputEl.value;
     console.log(heroStr);
-    // james: is this API endpoint correctly fetching the data you want?
+    // (tutor) james: is this API endpoint correctly fetching the data you want?
     var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCvC4D8onUfXzvjTOM-dBfEA&maxResults=5&order=date&q=' + heroStr + '&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4';
+    
     
     fetch(requestUrl)
     .then(function(response){
@@ -85,7 +87,10 @@ function getYoutubeApi(){
         //videoEl.setAttribute("href","https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoID + "&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4");
         
         videoEl.append(videoImageEl);
+
+        
        
+
         console.log(videoEl);
         console.log(videoListEl);
         console.log(videoImageEl);
