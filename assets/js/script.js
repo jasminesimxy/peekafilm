@@ -1,23 +1,3 @@
-// jasmine: landing page - search button - event listener 
-var landingContainer = document.getElementById("landing");
-var contentContainer = document.getElementById("contentpage")
-
-// jasmine: landing page - search button - event listener 
-
-
-
-
-// jasmine: second page 
-
-function displayContent () {
-    //hide landing page 
-    landingContainer.style.display="none";
-    contentContainer.style.display="block";
-
-}
-
-// jasmine: hide landing page - show content page
-
 var btnEl = document.querySelector('#search-button');
 var searchInputEl = document.querySelector('#search-input');
 var heroInputEl = document.getElementById('hero-input');
@@ -73,17 +53,6 @@ let result = "";
 
 // chenghao: videolist - fetch data from youtube api with api key
 
-var btnEl = document.querySelector('.button');
-var searchInputEl = document.querySelector('#search-input');
-
-
-
-function getApi(){ //Youtube api
-
-    var searchInput = searchInputEl.value;
-    console.log(searchInput);
-
-    var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCvC4D8onUfXzvjTOM-dBfEA&maxResults=5&order=date&q=' + searchInput + '&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4';
 function getYoutubeApi(){
     videoListEl.replaceChildren();
     
