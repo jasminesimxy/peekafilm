@@ -41,14 +41,93 @@ function addToLocalStorage(searchTerm) {
 // harry: information list - fetch data from marvel api with api KeyboardEvent
 
 
-function searchCharacters(query) {
+function searchCharacters(e,query) {
+  e.preventDefault()
+  document.getElementById('search-results').innerHTML = ''
+   query = document.querySelector("#superheroName").value
   const url = `${MARVEL_BASE_URL}/characters?ts=1&nameStartsWith=${query}&apikey=${MARVEL_API_KEY}&hash=667ae841fa34b73b2b37dd1c1df1e89e`;
   return fetch(url)
     .then(response => response.json())
-}
+
+
+    .then(data => {
+      let characters = data.data.results;
+      console.log(characters)
+      for (let i = 0; i < characters.length; i++) {
+          console.log(characters[i].name);
+          console.log(characters[i].description);
+          let h1 = document.createElement('h1')
+      h1.textContent = characters[i].name
+      document.getElementById('search-results').appendChild(h1)
+
+      let h2 = document.createElement('h1')
+      h2.textContent = characters[i].description
+      document.getElementById('search-results').appendChild(h2)
+     
+      let img = document.createElement('img')
+      img.src = characters[i].thumbnail.path + '.jpg'
+      document.getElementById('search-results').appendChild(img)
+      }
+      
+      var searchInput = query;
+    console.log(searchInput);
+
+    var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCvC4D8onUfXzvjTOM-dBfEA&maxResults=5&order=date&q=' + searchInput + '&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4';
+    
+    fetch(requestUrl)
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+
+        var videoID = data.items[0].id.videoId;
+        console.log(videoID) //videoId
+
+        var videoImage = data.items[0].snippet.thumbnails.default.url;
+        console.log(videoImage) //image src
+
+        var videoListEl = document.querySelector('#video-container')
+        var videoEl = document.createElement('a');
+
+
+        var videoImageEl = document.createElement('img');
+        videoImageEl.src = videoImage;
+
+        //videoEl.setAttribute("href","https://www.youtube.com/watch?v=" + videoID);
+        videoEl.setAttribute("href","https://www.youtube.com/embed/" + videoID);
+
+        //videoEl.setAttribute("href","https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoID + "&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4");
+        
+        videoEl.append(videoImageEl);
+
+        
+       
+
+        console.log(videoEl);
+        console.log(videoListEl);
+        console.log(videoImageEl);
+
+        document.getElementById('search-results').appendChild(videoEl);
+        
+    })
+     
+     
+  });
+
+var heroBtn = document.querySelector('#search')
+heroBtn.addEventListener('click', searchCharacters)
+
+// searchCharacters('spider')
+//   .then(characters => console.log(characters));
+
+
+
+
 
 const searchResults = document.getElementById("search-results")
 let result = "";
+
 
 
 // chenghao: videolist - fetch data from youtube api with api key
@@ -89,7 +168,7 @@ function getYoutubeApi(){
         videoEl.append(videoImageEl);
 
         
-       
+    
 
         console.log(videoEl);
         console.log(videoListEl);
@@ -106,6 +185,7 @@ function getYoutubeApi(){
 }
 
 btnEl.addEventListener('click',getYoutubeApi);
+
 // add an event listener to the search form
 searchForm.addEventListener('submit', (event) => {
   // prevent the form from submitting
@@ -117,6 +197,9 @@ searchForm.addEventListener('submit', (event) => {
   const inputField = event.target.elements['0'];
   // get the search term
   const searchTerm = inputField.value;
+
+
+ btnEl.addEventListener('click',getApi);
 
   // check if the search term is not empty
   if (searchTerm.trim() !== '') {
@@ -140,3 +223,4 @@ searchHistoryList.addEventListener('click', (event) => {
       // you can retrieve and display the information of the search term here
     }
 });
+
