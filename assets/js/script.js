@@ -30,12 +30,12 @@ searchForm.addEventListener('submit', (event) => {
 
 
   // get the input field
-  const inputField = event.target.elements['0'];
+  const inputField = document.getElementById("#search-form");
   // get the search term
-  const searchTerm = inputField.value;
+  const searchTerm = inputField;
 
   // check if the search term is not empty
-  if (searchTerm.trim() !== '') {
+  if (searchTerm == '') {
     // add the search term to the search history list
     searchHistoryList.innerHTML += `<li>${searchTerm}</li>`;
 
@@ -55,6 +55,7 @@ searchHistoryList.addEventListener('click', (event) => {
       // retrieve and display the information of the search term 
       displaySearchInfo(searchTerm);
       // you can retrieve and display the information of the search term here
+      window.location.replace("http://127.0.0.1:5500/peekafilm/content.html");
     }
   });
 
@@ -111,7 +112,7 @@ var searchInputEl = document.querySelector('#search-input');
 
 
 
-function getApi(){
+function getApi(){ //Youtube api
 
     var searchInput = searchInputEl.value;
     console.log(searchInput);
