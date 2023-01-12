@@ -90,7 +90,6 @@ var btnEl = document.querySelector('.button');
 var searchInputEl = document.querySelector('#search-input');
 
 
-
 function getApi(){
 
     var searchInput = searchInputEl.value;
@@ -124,10 +123,6 @@ function getApi(){
         //videoEl.setAttribute("href","https://www.googleapis.com/youtube/v3/videos?part=player&id=" + videoID + "&key=AIzaSyDC-TEGQQzeXYzTXJNiOI1ckI58hGEqZg4");
         
         videoEl.append(videoImageEl);
-
-        
-       
-
         console.log(videoEl);
         console.log(videoListEl);
         console.log(videoImageEl);
