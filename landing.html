@@ -4,38 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Peekafilm </title>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   </head>
   
+<header>
+  <div class ="block">
+    <div class ="box">
+      <h1 class="title is-1 is-spaced is-centered">Peekafilm</h1>
+    </div>
+  </div>
+  <div class ="block">
+  <nav class ="nav">
+    <div class ="nav-center">
+      <form id="search-form is-large">
+      <div class="field has-addons">
+        <div class="control is-expanded search-container is-large">
+          <input class="input search-bar is-large" id="superheroName" type="text" placeholder="Enter favorite superhero">
+        </div>
+        <div class="control">
+          <button class="button is-danger is-large is-inverted" id ="search" type="submit">Search</button>
+        </div>
+      </div>
+    </div> 
+    </form>
+  </nav>
+</div>
+</header>
 
   <body>
     <main>
-      <form id="search-form">
-        <!-- create an input field and a button -->
-        <div class="field has-addons">
-          <div class="control is-expanded search-container">
-
-            <input class="input search-bar  is-danger is-medium" id="superheroName" type="text" placeholder="Enter favorite superhero">
-
-          </div>
-          <div class="control">
-            <button class="button is-info is-danger is-medium" id ="search" type="submit">Search</button>
-          </div>
-        </div>
-      </form>
       
-     
-    </div>
-    
      </main> 
 
+     <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
+      <div class="column is-4">
+        <p class = "notifications is-info" id="display-input"></p>
+      </div> 
 
-  <div id ="search-results"></div>
-  <div id="video-container"></div>
-  <div id="display-input"></div>
-
-
-  
+      <div class="column is-4">
+        <p class = "notifications is-info" id ="search-results"></p>
+        </div>
+      <div class="column is-4">
+        <p class = "notifications is-info" id="video-container"></p>
+      </div>
+    </div>
 
   <script src="./assets/js/script.js"></script>
   </body>
