@@ -11,9 +11,10 @@ var heroBtn = document.querySelector('#search');
 const searchResults = document.getElementById("search-results");
 let result = "";
 
+var displayInputEl = document.querySelector('#display-input');
 
 
-function searchCharacters(e,query) {
+function searchCharacters(e) {
   e.preventDefault()
   document.getElementById('search-results').innerHTML = ''
    query = document.querySelector("#superheroName").value
@@ -39,7 +40,9 @@ function searchCharacters(e,query) {
       var searchInput = query;
     console.log(searchInput);
     getYoutubeApi();
-    addToLocalStorage();
+    
+    displayHistory();
+
     })
 }
 function getYoutubeApi(){
@@ -63,8 +66,9 @@ function getYoutubeApi(){
     var child = videoListEl.lastElementChild;
     while (child) {
       videoListEl.removeChild(child);
-        child = videoListEl.lastElementChild;
+      child = videoListEl.lastElementChild;
     }
+    
     for (var i = 0; i < data.items.length; i++){
       var videoID = data.items[i].id.videoId;
       var iframeEl = document.createElement('iframe');
@@ -72,17 +76,47 @@ function getYoutubeApi(){
       iframeEl.setAttribute("allowfullscreen","1");
       iframeEl.setAttribute("height","300px");
       iframeEl.setAttribute("width","600px");
-      videoListEl.appendChild(iframeEl)
+      videoListEl.appendChild(iframeEl);
     }
   })
 }
 
 heroBtn.addEventListener('click', searchCharacters);
 
-function addToLocalStorage() {
-    var searchInput = document.querySelector("#superheroName").value;
-    localStorage.setItem("searchInput", searchInput);
-    var storedInput = localStorage.getItem("searchInput");
-    document.getElementById("display-input").innerHTML = storedInput;
+
+function readLocalStorage(){
+  var storageHistory = localStorage.getItem("searchInput")
+  if(storageHistory){
+    storageHistory = JSON.parse(storageHistory);
+  }else{
+    storageHistory = [];
   }
+  return storageHistory;
+}
+
+function displayHistory(){
+  var storageHistory = readLocalStorage();
+  storageHistory.push(searchInputEl.value);
+  saveToLocalStorage(storageHistory);
+  //console.log(storageHistory);
+
+  var child = displayInputEl.lastElementChild;
+  while (child) {
+    displayInputEl.removeChild(child);
+    child = displayInputEl.lastElementChild;
+  }
+
+  var listEl = document.createElement("ol");
+
+  for(var i = 0; i < storageHistory.length; i++){
+    var liEl = document.createElement("li");
+    liEl.textContent = storageHistory[i];
+    listEl.appendChild(liEl);
+    displayInputEl.appendChild(listEl);
+  }
+}
+
+function saveToLocalStorage(storageHistory){
+  localStorage.setItem("searchInput",JSON.stringify(storageHistory));
+}
 
