@@ -80,9 +80,8 @@ function getYoutubeApi(){
 heroBtn.addEventListener('click', searchCharacters);
 
 function addToLocalStorage() {
-    var searchInput = document.querySelector("#superheroName").value;
-    localStorage.setItem("searchInput", searchInput);
-    var storedInput = localStorage.getItem("searchInput");
-    document.getElementById("display-input").innerHTML = storedInput;
-  }
-
+  var searchInput = document.querySelector("#superheroName").value;
+  localStorage.setItem("searchInput", searchInput);
+  var storedInput = localStorage.getItem("searchInput");
+  document.getElementById("display-input").innerHTML = storedInput;
+}
