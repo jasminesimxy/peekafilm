@@ -34,7 +34,7 @@ The index should be regularly updated with new characters and comic book appeara
 
 The following image shows the web application's appearance and functionality:
 
-<img width="1440" alt="Screen Shot 2023-01-16 at 9 04 26 am" src="https://user-images.githubusercontent.com/116129687/212628881-b8e20401-5054-4d9c-b28e-5cdd4844223a.png">
+<img width="1440" alt="Screen Shot 2023-01-16 at 9 14 00 am" src="https://user-images.githubusercontent.com/116129687/212629385-79394ada-7250-4bb2-85f4-2ed5938db128.png">
 ## Technology Used
 
 HTML, CSS, JavaScript, Bulma
