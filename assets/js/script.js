@@ -14,41 +14,32 @@ let result = "";
 var displayInputEl = document.querySelector('#display-input');
 
 
-function searchCharacters(e) {
-  e.preventDefault()
+function searchCharacters() {
+  //e.preventDefault()
   document.getElementById('search-results').innerHTML = ''
-   query = document.querySelector("#superheroName").value
+  query = document.querySelector("#superheroName").value
   const url = `${MARVEL_BASE_URL}/characters?ts=1&nameStartsWith=${query}&apikey=${MARVEL_API_KEY}&hash=667ae841fa34b73b2b37dd1c1df1e89e`;
-  return fetch(url)
+  fetch(url)
     .then(response => response.json())
     .then(data => {
       let characters = data.data.results;
       console.log(characters)
       for (let i = 0; i < characters.length; i++) {
-          console.log(characters[i].name);
-          console.log(characters[i].description);
-          let h1 = document.createElement('h1')
-      h1.textContent = characters[i].name
-      document.getElementById('search-results').appendChild(h1)
-      let h2 = document.createElement('h1')
-      h2.textContent = characters[i].description
-      document.getElementById('search-results').appendChild(h2)
-      let img = document.createElement('img')
-      img.src = characters[i].thumbnail.path + '.jpg'
-      document.getElementById('search-results').appendChild(img)
+        console.log(characters[i].name);
+        console.log(characters[i].description);
+        let h1 = document.createElement('h1')
+        h1.textContent = characters[i].name
+        document.getElementById('search-results').appendChild(h1)
+        let h2 = document.createElement('h1')
+        h2.textContent = characters[i].description
+        document.getElementById('search-results').appendChild(h2)
+        let img = document.createElement('img')
+        img.src = characters[i].thumbnail.path + '.jpg'
+        document.getElementById('search-results').appendChild(img)
       }
-      var searchInput = query;
-    console.log(searchInput);
-    getYoutubeApi();
-    
-    displayHistory();
-
     })
 }
 function getYoutubeApi(){
-  //event.preventDefault();
-
-  //videoListEl.removeChild();
   var searchInput = searchInputEl.value;
   console.log(searchInput);
   var requestUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId='+ marvelEntertainmentID +'&maxResults=' + maxResults +'&q=' + searchInput + '&key=' + youtubeApiKey;
@@ -80,9 +71,6 @@ function getYoutubeApi(){
     }
   })
 }
-
-heroBtn.addEventListener('click', searchCharacters);
-
 
 function readLocalStorage(){
   var storageHistory = localStorage.getItem("searchInput")
@@ -119,5 +107,14 @@ function displayHistory(){
 function saveToLocalStorage(storageHistory){
   localStorage.setItem("searchInput",JSON.stringify(storageHistory));
 }
+
+function start(event){
+  event.preventDefault();
+  searchCharacters();
+  getYoutubeApi();
+  displayHistory();
+}
+
+heroBtn.addEventListener('click', start);
 
 
