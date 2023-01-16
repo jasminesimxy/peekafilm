@@ -39,6 +39,7 @@ function searchCharacters() {
       }
     })
 }
+
 function getYoutubeApi(){
   var searchInput = searchInputEl.value;
   console.log(searchInput);
@@ -66,7 +67,7 @@ function getYoutubeApi(){
       iframeEl.setAttribute("src","https://www.youtube.com/embed/" + videoID);
       iframeEl.setAttribute("allowfullscreen","1");
       iframeEl.setAttribute("height","300px");
-      iframeEl.setAttribute("width","600px");
+      iframeEl.setAttribute("width","100%");
       videoListEl.appendChild(iframeEl);
     }
   })
